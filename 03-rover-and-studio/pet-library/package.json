@@ -1,0 +1,19 @@
+{
+  "name": "start",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.5.0",
+    "graphql": "^15.7.2"
+  },
+  "devDependencies": {
+    "@apollo/rover": "^0.4.0"
+  }
+}

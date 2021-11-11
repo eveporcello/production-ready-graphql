@@ -1,0 +1,141 @@
+scalar Date
+
+union FamilyPet = Cat | Dog
+union ExoticPet = Rabbit | Stingray
+
+interface Pet {
+  id: ID!
+  name: String!
+  weight: Float
+  status: PetStatus
+  photo: Photo
+  dueDate: Date
+  inCareOf: Customer
+}
+
+type Cat implements Pet {
+  id: ID!
+  name: String!
+  weight: Float
+  status: PetStatus
+  photo: Photo
+  dueDate: Date
+  inCareOf: Customer
+  sleepAmount: Int
+  curious: Boolean
+}
+
+type Dog implements Pet {
+  id: ID!
+  name: String!
+  weight: Float
+  status: PetStatus
+  photo: Photo
+  dueDate: Date
+  inCareOf: Customer
+  good: Boolean
+}
+
+type Rabbit implements Pet {
+  id: ID!
+  name: String!
+  weight: Float
+  status: PetStatus
+  photo: Photo
+  dueDate: Date
+  inCareOf: Customer
+  favoriteFood: String
+  floppy: Int
+}
+
+type Stingray implements Pet {
+  id: ID!
+  name: String!
+  weight: Float
+  status: PetStatus
+  photo: Photo
+  dueDate: Date
+  inCareOf: Customer
+  chill: Int
+  fast: Boolean
+}
+
+type Customer {
+  username: ID!
+  name: String!
+  location: String!
+    @deprecated(
+      reason: "use `locationDetails { city state }` instead."
+    )
+  locationDetails: Location
+  dateCreated: Date
+  currentPets: [Pet!]!
+  checkoutHistory: [Checkout!]!
+}
+
+type Location {
+  city: String!
+  state: String!
+}
+
+type Checkout {
+  pet: Pet
+  checkOutDate: Date!
+  checkInDate: Date!
+  late: Boolean
+}
+
+enum PetStatus {
+  AVAILABLE
+  CHECKEDOUT
+}
+
+enum PetCategory {
+  CAT
+  DOG
+  RABBIT
+  STINGRAY
+}
+
+type Photo {
+  full: String
+  thumb: String
+}
+
+input CreateAccountInput {
+  name: String!
+  username: ID!
+  password: String!
+}
+
+type LogInPayload {
+  customer: Customer
+  token: String!
+}
+
+type CheckOutPayload {
+  customer: Customer
+  pet: Pet
+  checkOutDate: Date
+}
+
+type Query {
+  totalPets: Int!
+  availablePets: Int!
+  checkedOutPets: Int!
+  allPets(limit: Int!, page: Int!): [Pet!]!
+  allAvailablePets: [Pet!]!
+  allCheckedOutPets: [Pet!]!
+  familyPets: [FamilyPet!]!
+  exoticPets: [ExoticPet!]!
+  totalCustomers: Int!
+  allCustomers: [Customer!]!
+  me: Customer
+}
+
+type Mutation {
+  createAccount(input: CreateAccountInput!): Customer!
+  logIn(username: ID!): LogInPayload!
+  checkIn(id: ID!): Checkout!
+  checkOut(id: ID!): CheckOutPayload!
+}
