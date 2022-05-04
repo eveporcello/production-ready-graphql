@@ -31,3 +31,7 @@ These files are your starting point. Clone or download these files to get starte
 ## Apollo Studio
 
 - [Studio Login](https://studio.apollographql.com/)
+
+## Apollo Federation
+
+- [Federation Nation Repo](https://github.com/moonhighway/federation-nation)
