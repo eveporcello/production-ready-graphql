@@ -28,6 +28,10 @@ These files are your starting point. Clone or download these files to get starte
 - [GraphQL Bleeding Edge Playground](https://github.com/n1ru4l/graphql-bleeding-edge-playground)
 - [Proposed Spec](https://github.com/graphql/graphql-spec/pull/742)
 
+## Schema Start
+
+- [Start](https://codesandbox.io/s/festive-scott-funf5j)
+
 ## Apollo Studio
 
 - [Studio Login](https://studio.apollographql.com/)
